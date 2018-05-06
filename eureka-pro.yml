@@ -1,0 +1,21 @@
+logging:
+  config: classpath:logback-production.xml
+---
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: eureka-peer1
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-peer2:${server.port}/eureka/
+
+---
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: eureka-peer2
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-peer1:${server.port}/eureka/
