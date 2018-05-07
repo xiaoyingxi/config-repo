@@ -1,3 +1,20 @@
+spring:
+  profiles.active: dev
+  jackson.serialization.WRITE_DATES_AS_TIMESTAMPS: true
+
+management:
+  server:
+    security.enabled: false
+    health:
+      diskspace.enabled: false
+    endpoint:
+      health.enabled: true
+#      show-details: always
+  endpoints:
+    web:
+      base-path: /manage
+      path-mapping.health: status
+
 eureka:
   instance:
     statusPageUrlPath: /info
@@ -8,3 +25,59 @@ eureka:
     registryFetchIntervalSeconds: 5
     healthcheck:
       enabled: true
+    
+logging:
+  level:
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+  path: /var/yuuyoo
+
+
+---
+spring:
+  profiles: dev-mongo
+spring.data.mongodb:
+  uri: mongodb://localhost/yuuyoo
+---
+spring:
+  profiles: dev-redis
+  redis:
+    host: localhost
+    port: 6379
+---
+spring:
+  profiles: dev-rabbitmq
+  rabbitmq:
+    addresses: localhost:5672
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASSWORD:guest}
+    virtual-host: ${RABBIT_VHOST:yuuyoo}
+    publisherConfirms: true
+    stomp-port: 61613
+yuuyoo:
+  rabbitmq:
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASSWORD:guest}
+    virtual-host: accounting
+
+---
+spring:
+  profiles: dev-eureka
+eureka:
+  #instance:
+    #instanceId: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}:@project.version@
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+---
+spring:
+  profiles: dev-mysql
+  datasource:
+    dbname:
+      host: localhost
+      port: 3306
+      database: pilipadb2
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/pilipadb2?useSSL=false&characterEncoding=utf8
+      username: root
+      password: admin123

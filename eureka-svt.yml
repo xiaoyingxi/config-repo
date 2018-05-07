@@ -1,5 +1,6 @@
 logging:
   config: classpath:logback-production.xml
+  
 eureka:
   instance:
     hostname: pilipa-eureka
