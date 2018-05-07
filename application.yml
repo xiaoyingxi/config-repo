@@ -16,16 +16,18 @@ management:
       path-mapping.health: status
 
 eureka:
-  instance:
-    statusPageUrlPath: /info
-    healthCheckUrlPath: /health
-    preferIpAddress: false
+  server:
+    enable-self-preservation: false
   client:
-    fetchRegistry: true
-    registryFetchIntervalSeconds: 5
-    healthcheck:
-      enabled: true
+    fetch-registry: false
+    register-with-eureka: false
+    registry-fetch-interval-seconds: 5
+  instance:
+    status-page-url-path: /info
+    health-check-url-path: /status
+    prefer-ip-address: false
     
+
 logging:
   level:
     org.springframework.security: WARN
