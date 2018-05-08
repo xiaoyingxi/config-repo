@@ -3,7 +3,7 @@ logging:
   
 eureka:
   instance:
-    hostname: pilipa-eureka
+    hostname: svt-eureka
   client:
     registerWithEureka: false
     fetchRegistry: false

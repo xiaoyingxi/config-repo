@@ -70,7 +70,8 @@ eureka:
     #instanceId: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}:@project.version@
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://localhost:8761/eureka
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
 ---
 spring:
   profiles: dev-mysql
