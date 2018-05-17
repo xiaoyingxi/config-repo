@@ -1,0 +1,5 @@
+server.port: 8011
+management.server.port: 8012
+
+spring:
+  profiles.include: dev-eureka, dev-redis
