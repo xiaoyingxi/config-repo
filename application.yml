@@ -19,9 +19,11 @@ eureka:
   server:
     enable-self-preservation: false
   client:
-    fetch-registry: false
-    register-with-eureka: false
+    fetch-registry: true
+    register-with-eureka: true
     registry-fetch-interval-seconds: 5
+    healthcheck:
+      enabled: true
   instance:
     status-page-url-path: /info
     health-check-url-path: /status
