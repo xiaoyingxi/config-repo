@@ -7,8 +7,20 @@ spring:
   profiles: svt-eureka
 eureka:
   instance:
-    #instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-    instanceId: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}:@project.version@
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
   client:
     serviceUrl:
       defaultZone: http://yuuyoo-eureka:8761/eureka
+
+---
+spring:
+  profiles: svt-redis
+  redis:
+    host: http://yuuyoo-redis
+    port: 6379
+
+---
+spring:
+  profiles: svt-mongo
+spring.data.mongodb:
+  uri: mongodb://yuuyoo-mongo/yuuyoo
