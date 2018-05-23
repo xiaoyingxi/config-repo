@@ -1,2 +1,2 @@
 spring:
-  profiles.include: pro-eureka, pro-redis
+  profiles.include: pro-eureka,pro-redis

@@ -1,2 +1,2 @@
 spring:
-  profiles.include: svt-redis
+  profiles.include: svt-eureka,svt-redis

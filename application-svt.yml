@@ -16,11 +16,5 @@ eureka:
 spring:
   profiles: svt-redis
   redis:
-    host: http://yuuyoo-redis
+    host: yuuyoo-redis
     port: 6379
-
----
-spring:
-  profiles: svt-mongo
-spring.data.mongodb:
-  uri: mongodb://yuuyoo-mongo/yuuyoo
