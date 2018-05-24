@@ -1,0 +1,14 @@
+server.port: 8001
+management:
+  server:
+    port: 8002
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+zuul:
+  routes:
+    config: /cfg/**
+
+spring:
+  profiles.include: dev-eureka,dev-redis
